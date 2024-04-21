@@ -45,11 +45,10 @@ class sdkman (
         default => [$home_env, "JAVA_HOME=$java_home"]
     }
 
-    wget::fetch {'https://get.sdkman.io':
-      destination => '/tmp/sdkman-install.sh',
-      verbose     => true,
-      execuser    => $owner,
-      user        => $owner,
+    archive {'/tmp/sdkman-install.sh':
+      ensure => present,
+      source => 'https://get.sdkman.io',
+      user   => $owner,
     } ~>
     exec { 'Install Sdkman' :
       user        => $owner,
