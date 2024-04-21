@@ -26,8 +26,6 @@ class sdkman (
     $package_hash = {}
 ) {
 
-    validate_hash($package_hash)
-
     $user_group = $group ? {
       ''      => $owner,
       default => $group
